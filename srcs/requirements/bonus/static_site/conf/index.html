@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de schernan — Étudiant à l'école 42.">
+    <title>schernan — Portfolio 42</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        /* Hero / Header */
+        header {
+            margin-bottom: 80px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #4f46e5; /* Indigo accent */
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 300;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            color: #0f172a;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 40px;
+            color: #0f172a;
+            border-left: 4px solid #4f46e5; /* Simple colored line design */
+            padding-left: 12px;
+        }
+
+        /* Projects List (Horizontal Rows) */
+        .project-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 24px 0;
+            border-bottom: 1px solid #f8fafc;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .project-row:hover {
+            opacity: 0.8;
+            transform: translateX(4px); /* Very subtle interaction */
+        }
+
+        .project-info {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: #64748b;
+            max-width: 600px;
+        }
+
+        .project-meta {
+            font-size: 0.8rem;
+            color: #4338ca;
+            background-color: #eef2ff;
+            padding: 4px 12px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        /* Skills (Tags) */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-item {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #334155;
+            transition: background-color 0.2s;
+        }
+
+        .skill-item:hover {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 3rem; }
+            .project-row { flex-direction: column; }
+            .project-info { padding-right: 0; margin-bottom: 12px; }
+            .project-meta { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <header>
+        <div class="tagline">Étudiant 1337 — Portfolio 42</div>
+        <h1>schernan</h1>
+    </header>
+
+    <section id="projects">
+        <h2>Les Projets</h2>
+
+        <div class="project-row">
+            <div class="project-info">
+                <div class="project-title">Inception</div>
+                <div class="project-desc">Infrastructure Docker complète avec Nginx, MariaDB, WordPress, Redis, FTP, Adminer et Portainer.</div>
+            </div>
+            <div class="project-meta">Docker · DevOps</div>
+        </div>
+
+        <div class="project-row">
+            <div class="project-info">
+                <div class="project-title">Philosophers</div>
+                <div class="project-desc">Simulation algorithmique avec gestion fine de la concurrence via pthreads et mutex pour éviter les deadlocks.</div>
+            </div>
+            <div class="project-meta">Threads · Mutex</div>
+        </div>
+
+        <div class="project-row">
+            <div class="project-info">
+                <div class="project-title">minishell</div>
+                <div class="project-desc">Création d'un shell interactif reproduisant le comportement de bash (parsing, redirections, signaux).</div>
+            </div>
+            <div class="project-meta">C · Système UNIX</div>
+        </div>
+
+        <div class="project-row">
+            <div class="project-info">
+                <div class="project-title">cub3d</div>
+                <div class="project-desc">Moteur 3D en raycasting inspiré des premiers jeux FPS avec gestion des textures et collisions.</div>
+            </div>
+            <div class="project-meta">C · Graphique</div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Expertise technique</h2>
+        <div class="skills-container">
+            <div class="skill-item">C / C++</div>
+            <div class="skill-item">Docker & Compose</div>
+            <div class="skill-item">Linux (Debian) & Bash</div>
+            <div class="skill-item">Réseau & Nginx</div>
+            <div class="skill-item">Bases de données</div>
+            <div class="skill-item">HTML / CSS</div>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>

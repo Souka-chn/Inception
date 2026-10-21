@@ -1,0 +1,4 @@
+srcs/.env
+secrets/
+*.phar
+.DS_Store

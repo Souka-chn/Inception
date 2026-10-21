@@ -1,0 +1,107 @@
+
+services:
+  mariadb:
+    container_name: mariadb
+    build: requirements/mariadb
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - inception_network
+    volumes:
+      - mariadb_volume:/var/lib/mysql
+
+  wordpress:
+    container_name: wordpress
+    build: requirements/wordpress
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - inception_network
+    volumes:
+      - wordpress_volume:/var/www/html
+
+  nginx:
+    container_name: nginx
+    build: requirements/nginx
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - inception_network
+    volumes:
+      - wordpress_volume:/var/www/html
+    ports:
+      - "443:443"
+
+  static_site:
+    container_name: static_site
+    build: requirements/bonus/static_site
+    restart: always
+    networks:
+      - inception_network
+
+  adminer:
+    container_name: adminer
+    build: requirements/bonus/adminer
+    restart: always
+    networks:
+      - inception_network
+
+  redis:
+    container_name: redis
+    build: requirements/bonus/redis
+    restart: always
+    networks:
+      - inception_network
+
+  ftp:
+    container_name: ftp
+    build: /requirements/bonus/ftp
+    depends_on:
+      - wordpress
+    networks:
+      - inception_network
+    ports:
+      - "21:21"
+      - "40000-40005:40000-40005"
+    env_file:
+      - .env
+    volumes:
+      - wordpress_volume:/var/www/html/wordpress
+    restart: always
+
+  portainer:
+    container_name: portainer
+    build: requirements/bonus/portainer
+    restart: always
+    networks:
+      - inception_network
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+networks:
+  inception_network:
+    driver: bridge
+
+volumes:
+  mariadb_volume:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/schernan/data/mariadb
+      o: bind
+  wordpress_volume:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/schernan/data/wordpress
+      o: bind
+  portainer_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/schernan/data/portainer

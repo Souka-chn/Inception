@@ -573,13 +573,3 @@ This command is useful for checking the final Compose configuration after enviro
 
 ---
 
-## AI Usage
-
-AI tools were used as a learning and assistance resource during the project.
-
-They were used for:
-
-* Helping understand some technical concepts.
-* Assisting in writing the README and documentation.
-* Debugging errors.
-
